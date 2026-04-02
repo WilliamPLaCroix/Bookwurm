@@ -1,8 +1,8 @@
-# i+1 — Adaptive Language Reader
+# Bookwurm Adaptive Language Reader
 
-A language learning app built around Stephen Krashen's input hypothesis: that acquisition happens fastest when reading material contains roughly 1% unknown vocabulary — just enough challenge to stretch comprehension without losing meaning.
+A language learning app built around Stephen Krashen's input hypothesis: that acquisition happens fastest when reading material contains roughly 1% unknown vocabulary; just enough challenge to stretch comprehension without losing meaning.
 
-i+1 delivers sentence- and paragraph-level reading chunks, scores them against the learner's known vocabulary, and sequences them using spaced repetition so every session stays at the ideal difficulty level. As the user's vocabulary grows, the scoring updates automatically — surfacing harder content only when the learner is ready for it.
+i+1 delivers sentence- and paragraph-level reading chunks, scores them against the learner's known vocabulary, and sequences them using spaced repetition so every session stays at the ideal difficulty level. As the user's vocabulary grows, the scoring updates automatically, surfacing harder content only when the learner is ready for it.
 
 Think Anki meets LingQ, driven by an algorithm instead of manual curation.
 
@@ -51,38 +51,38 @@ CI/CD
 
 ## Work Packages
 
-### WP1 — Data model and SRS core
+### WP1: Data model and SRS core
 - PostgreSQL/SQLite schema: users, cards, vocab items, review history
 - SQLAlchemy models and Alembic migrations
 - SM-2 SRS algorithm implemented from scratch in `services/srs.py`
 - Unit tests for scheduling logic
 - Seed script with initial sentence data
 
-### WP2 — FastAPI layer
-- `GET /cards/next` — returns next i+1 card for a user
-- `POST /reviews` — submits comprehension score, triggers SRS update
-- `GET /vocab/{user_id}` — returns known vocabulary with metadata
+### WP2: FastAPI layer
+- `GET /cards/next` - returns next i+1 card for a user
+- `POST /reviews` - submits comprehension score, triggers SRS update
+- `GET /vocab/{user_id}` - returns known vocabulary with metadata
 - Pydantic schemas, JWT authentication, dependency injection
 
-### WP3 — NLP pipeline and i+1 scorer
+### WP3: NLP pipeline and i+1 scorer
 - spaCy tokenisation, lemmatisation, POS tagging on corpus
 - Word frequency ranking integrated into card metadata
-- `services/scorer.py` — ranks candidate cards by predicted comprehension
+- `services/scorer.py` - ranks candidate cards by predicted comprehension
 - Heuristic baseline (% unknown words), upgradeable to ML model
 
-### WP4 — Containerisation and MVP deploy
+### WP4: Containerisation and MVP deploy
 - Dockerfile for FastAPI app
 - Docker Compose for local dev (API + DB)
 - Deploy to Railway via Docker
 - Environment-variable-driven config (no hardcoded credentials)
 
-### WP5 — CI/CD and observability
+### WP5: CI/CD and observability
 - GitHub Actions: run tests → build image → push to registry → deploy
 - Swap SQLite → PostgreSQL (Railway-managed)
 - CloudWatch logging and basic latency alarm
 - Architecture diagram and API docs (auto-generated via FastAPI)
 
-### WP6 — AWS migration (stretch goal)
+### WP6: AWS migration (stretch goal)
 - Push image to AWS ECR
 - Deploy to ECS Fargate
 - RDS for PostgreSQL in production
@@ -107,4 +107,4 @@ CI/CD
 
 ## Status
 
-Work in progress — WP1 in development.
+Work in progress: WP1 in development.
